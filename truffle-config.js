@@ -2,7 +2,7 @@ require('babel-register');
 require('babel-polyfill');
 require('dotenv').config();
 const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
-const privateKeys = process.env.PRIVATE_KEYS || ""
+const privateKeys = [process.env.PRIVATE_KEYS]
 
 module.exports = {
   networks: {
@@ -12,9 +12,9 @@ module.exports = {
       network_id: "*" // Match any network id
     },
     kovan: {
-      provider: function() {
+      provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(','), // Array of account private keys
+          privateKeys, // Array of account private keys
           `https://kovan.infura.io/v3/${process.env.INFURA_API_KEY}`// Url to an Ethereum Node
         )
       },
@@ -23,9 +23,9 @@ module.exports = {
       network_id: 42
     },
     main: {
-      provider: function() {
+      provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(','), // Array of account private keys
+          privateKeys, // Array of account private keys
           `https://main.infura.io/v3/${process.env.INFURA_API_KEY}`// Url to an Ethereum Node
         )
       },
@@ -34,9 +34,9 @@ module.exports = {
       network_id: 1
     },
     rinkeby: {
-      provider: function() {
+      provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(','), // Array of account private keys
+          privateKeys, // Array of account private keys
           `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`// Url to an Ethereum Node
         )
       },
@@ -45,9 +45,9 @@ module.exports = {
       network_id: 4
     },
     ropsten: {
-      provider: function() {
+      provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(','), // Array of account private keys
+          privateKeys, // Array of account private keys
           `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`// Url to an Ethereum Node
         )
       },
